@@ -88,17 +88,15 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
-/**
- * Enemy States :
- * 
- * - Patrol : the enemy will patrol an area in a back and forth motion. when the player comes in visual range of enemy the enemy will switch to chasing or attacking depending on how close the player is to the enemy.
- * 
- * - Chase : the enemy will chase the player unless the player reaches the maximum chasing distance the enemy will switch to the patrol state
- * 
- * - Attack: the enemy will attack the player when in attacking range. if the player is in range to chase the enemy will chase the player. if the player is out 
- * 
- * of chasing range the enemy will patrol
- */
+// Enemy States :
+// 
+// - Patrol : the enemy will patrol an area in a back and forth motion. when the player comes in visual range of enemy the enemy will switch to chasing or attacking depending on how close the player is to the enemy.
+// 
+// - Chase : the enemy will chase the player unless the player reaches the maximum chasing distance the enemy will switch to the patrol state
+// 
+// - Attack: the enemy will attack the player when in attacking range. if the player is in range to chase the enemy will chase the player. if the player is out
+// 
+// of chasing range the enemy will patrol
 function Enemy_Patrol_State (enemy_clone_sprite: Sprite) {
     timer.after(500, function () {
         console.log("Switching patrol direction")
@@ -115,11 +113,9 @@ function Enemy_Patrol_State (enemy_clone_sprite: Sprite) {
     }
     if (Player_Sprite.x - enemy_clone_sprite.x <= Enemy_Chase_Max_Distance && Player_Sprite.x - enemy_clone_sprite.x > Enemy_Attack_Max_Distance || Player_Sprite.y - enemy_clone_sprite.y <= Enemy_Chase_Max_Distance && Player_Sprite.y - enemy_clone_sprite.y > Enemy_Attack_Max_Distance) {
         // Set Enemy State to Chase
-        // 
         sprites.setDataString(enemy_clone_sprite, "state", list[2])
     } else if (Player_Sprite.x - enemy_clone_sprite.x <= Enemy_Chase_Max_Distance || Player_Sprite.y - enemy_clone_sprite.y <= Enemy_Chase_Max_Distance) {
         // Set Enemy State to Chase
-        // 
         sprites.setDataString(enemy_clone_sprite, "state", list[2])
     } else {
     	
